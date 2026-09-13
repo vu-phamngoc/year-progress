@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Year Progress</title>
+
+    <link rel="stylesheet"
+          th:href="@{/css/style.css}">
+
+</head>
+
+
+<body>
+
+<div class="scene"
+     id="scene"
+     th:attr="data-offset=${offset}">
+
+
+    <!-- =========================
+         NĂM
+         ========================= -->
+
+    <div class="years-row">
+
+        <div class="year-block current-year"
+             id="yearCurrent">
+
+            2026
+
+        </div>
+
+
+        <div class="year-block next-year"
+             id="yearNext">
+
+            2027
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         THÁNG
+         ========================= -->
+
+    <div class="months-row"
+         id="monthsRow">
+
+        <span th:each="m : ${#numbers.sequence(1, 12)}"
+              th:text="${m}">
+
+            1
+
+        </span>
+
+    </div>
+
+
+    <!-- =========================
+         NGÀY / GIỜ
+         ========================= -->
+
+    <div class="clock-row">
+
+        <span id="weekday"></span>,
+
+        <span id="dayNumber"></span>/<span id="monthNumber"></span>/<span id="yearNumber"></span>
+
+        -
+
+        <span id="timeNumber"></span>
+
+    </div>
+
+
+    <!-- =========================
+         MŨI TÊN
+         ========================= -->
+
+    <div class="nav-arrows">
+
+
+        <!-- Năm trước -->
+
+        <a class="arrow"
+           th:href="@{/(offset=${offset - 1})}"
+           aria-label="Previous">
+
+            <svg viewBox="0 0 24 24">
+
+                <path
+                    d="M6 15l6-6 6 6"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"/>
+
+            </svg>
+
+        </a>
+
+
+        <!-- Năm sau -->
+
+        <a class="arrow"
+           th:href="@{/(offset=${offset + 1})}"
+           aria-label="Next">
+
+            <svg viewBox="0 0 24 24">
+
+                <path
+                    d="M6 9l6 6 6-6"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"/>
+
+            </svg>
+
+        </a>
+
+
+    </div>
+
+</div>
+
+
+<script th:src="@{/js/app.js}"></script>
+
+</body>
+
+</html>
